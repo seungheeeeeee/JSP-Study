@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/calc")
+@WebServlet("/calc") //언어테이션 부분
 public class CalcServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -29,7 +29,7 @@ public class CalcServlet extends HttpServlet {
 			throws ServletException, IOException {
 			int n1 = Integer.parseInt(request.getParameter("n1"));
 			int n2 = Integer.parseInt(request.getParameter("n2"));
-			String op = request.getParameter("op");
+			String op = request.getParameter("op"); //op 부분 가져오기
 			
 			long result = 0;
 			
