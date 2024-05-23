@@ -15,7 +15,7 @@ public class StudentDAO {
 	
 	final String JDBC_DRIVER = "org.h2.Driver";
 	final String JDBC_URL = "jdbc:h2:tpc://localhost/~/jwbookdb";
-	
+	// 연결/종료 메서드 구현
 	public void open() {
 		try {
 			Class.forName(JDBC_DRIVER);
@@ -29,11 +29,11 @@ public class StudentDAO {
 			conn.close(); 
 		}   catch (Exception e) {e.printStackTrace();}
 	}
-	
+	// 학생 등록 메서드 구현
 	public void insert(Student s) {
 		open();
 		String sql = 
-				"INSERT INTO student(username, univ, birth, email) values(?,?,?,?)";
+				"INSERT INTO student(username, univ, birth, email) values(?,?,?,?)"; // PreparedStatement를 이용해'?'에 해당하는 데이터를 매핑한다.
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -46,14 +46,14 @@ public class StudentDAO {
 		} catch (Exception e) {e.printStackTrace();}
 		  finally {close();}
 	}
-	
+	//학생 목록 메서드 구현
 	public List<Student> getAll() {
 		open();
 		List<Student> students = new ArrayList<>();
 		
 		try {
-			pstmt = conn.prepareStatement("select * from student");
-			ResultSet rs = pstmt.executeQuery();
+			pstmt = conn.prepareStatement("select * from student"); //전체 학생 목록 가져오기
+			ResultSet rs = pstmt.executeQuery(); // ReasultSet을 이용헤 Student 객체에 매핑
 			while(rs.next()) {
 				Student s = new Student();
 				s.setId(rs.getInt("id"));
@@ -64,8 +64,8 @@ public class StudentDAO {
 				
 				students.add(s);
 			}
-		} catch (Exception e) {e.printStackTrace();}
-		  finally {close();}
+		} catch (Exception e) {e.printStackTrace();} //예외 처리
+		  finally {close();} //연결 종료
 		return students;
 	}
 }
