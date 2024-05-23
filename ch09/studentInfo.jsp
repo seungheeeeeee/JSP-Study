@@ -5,32 +5,32 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>�л�����</title>
+<title>학생정보</title>
 </head>
 <body>
-	<h2>�л�����</h2>[<a href="/jwbook/studentControl">���ΰ�ħ</a>]
+	<h2>학생정보</h2>[<a href="/jwbook/studentControl">새로고침</a>]
 	<hr>
 	<table border="1">
-	 <tr><th>id</th><th>�̸�</th><th>����</th><th>����</th><th>�̸���</th></tr>
-	 <c:forEach items="${students}" var="s">
+	 <tr><th>id</th><th>이름</th><th>대학</th><th>생일</th><th>이메일</th></tr>
+	 <c:forEach items="${students}" var="s"> //목록 사용
 	   <tr>
 	       <td>${s.id}</td><td>${s.username}</td><td>${s.univ}</td><td>${s.birth}</td><td>${s.email}</td>
 	    </tr>
 	    </c:forEach>
 	</table>
 	<hr>
-	<h2>�л� �߰�</h2>
+	<h2>학생 추가</h2>
 	<hr>
-	<form method = "post" action="/jwbook/studentControl?action=insert">
-		<label>�̸�</label>
+	<form method = "post" action="/jwbook/studentControl?action=insert"> //컨트롤러 호철 url 
+		<label>이름</label>
 		<input type="text" name="username"><br>
-		<label>����</label>
+		<label>대학</label>
 		<input type="text" name="univ"><br>
-		<label>����</label>
+		<label>생일</label>
 		<input type="text" name="birth"><br>
-		<label>�̸���</label>
+		<label>이메일</label>
 		<input type="text" name="email"><br>
-		<button type="submit">���</button>
+		<button type="submit">등록</button>
 		
 	</form>
 </body>
