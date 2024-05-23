@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.beanutils.BeanUtils;
 
 
-@WebServlet("/studentControl")
+@WebServlet("/studentControl") //서블릿 생성
 public class StudentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -44,10 +44,10 @@ public class StudentController extends HttpServlet {
 		}
 	}
 
-	
+	//list, intsert 2개의 action 요청을 구현
 	public String list(HttpServletRequest request, HttpServletResponse response) 
 	{
-		request.setAttribute("students", dao.getAll());
+		request.setAttribute("students", dao.getAll()); // 호출 결과 request scope object 속성에 'student'라는 이름으로 저장하고 뷰의 이름을 리턴
 		return "studentInfo.jsp";
 		
 	}
@@ -56,10 +56,10 @@ public class StudentController extends HttpServlet {
 	{
 		Student s = new Student();
 		try {
-			BeanUtils.populate(s, request.getParameterMap());
-			
+			BeanUtils.populate(s, request.getParameterMap()); // BeanUtios 라이브러리 의존성 추가
+			// 모든 입력값을 읽어와 Student 객체로 매핑한 다음
 		} catch (Exception e) {e.printStackTrace();}
-		dao.insert(s);
+		dao.insert(s); // 메서드를 호출
 		return list(request, response);
 	}
 
