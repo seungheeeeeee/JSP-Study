@@ -1,6 +1,6 @@
 package ch09;
 
-import java.sql.Date;
+import java.sql.Date; //날짜 데이터로 타입을 사용하기 위해 import
 
 public class Student {
 	private int id;
@@ -9,7 +9,7 @@ public class Student {
 	private Date birth;
 	private String email;
 	
-	public int getId() {
+	public int getId() {    // getter/setter 메서드 자동 생성
 		return id;
 	}
 	public void setId(int id) {
