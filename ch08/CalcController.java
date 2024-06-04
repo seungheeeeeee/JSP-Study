@@ -43,10 +43,10 @@ public class CalcController extends HttpServlet {
 		case "*": result = n1*n2; break;
 		}
 		
-		request.setAttribute("result", result);
+		request.setAttribute("result", result); 
 		getServletContext().getRequestDispatcher("/ch08/calcResult.jsp")
 			.forward(request, response);
-	
+	//계산 결과를 'result'라는 이름으로 request scope에 저장하고 결과를 보여주는 calcResult.jsp 페이지로 포워딩 한다.
 }
 
 		
